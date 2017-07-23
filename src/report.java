@@ -36,11 +36,11 @@ public class report {
 		
 		 i++;
 		 if(res.equalsIgnoreCase("Passed")){
-			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"C://Users//HP/workspace/Customized_Reports/screenshot/"+filename+".png\" target=\"_blank\" class=\"green\"> "+ res +"</a></b></td><td>" +time+ " </tr>"); 
+			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"/screenshot/"+filename+".png\" target=\"_blank\" class=\"green\"> "+ res +"</a></b></td><td>" +time+ " </tr>"); 
 		 }
 		 
 		 if(res.equalsIgnoreCase("Failed")){
-			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"C://Users//HP/workspace/Customized_Reports/screenshot/"+filename+".png\" target=\"_blank\" class=\"red\"> "+ res +"</a></b></td></tr>"); 
+			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"/screenshot/"+filename+".png\" target=\"_blank\" class=\"red\"> "+ res +"</a></b></td></tr>"); 
 		 }
 		
          filename++;
@@ -49,7 +49,7 @@ public class report {
 	
 	public void takescreenshot() throws HeadlessException, AWTException, IOException{
 		BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-    	ImageIO.write(image, "png", new File("C://Users/HP/workspace/Customized_Reports/screenshot/"+ filename+".png"));
+    	ImageIO.write(image, "png", new File("screenshot/"+ filename+".png"));
 	}
 	
 	    public static void WriteToFile(String Content, String fileName) throws IOException {
