@@ -50,10 +50,9 @@ public class BasePage extends report {
 	 hour=(diff /(100*60*60)) %24;
 	 if(sec==0){
 		 
-		// sec =  diff%1000;
+		
 		 dif= (float)diff/1000;
-		 //sec = dif;
-		// System.out.println("Diifff"+dif+"asdasd"+diff);
+		
 		 time_taken=hour +":" +min + ":"+dif;
 		 return;
 	 }
@@ -64,7 +63,7 @@ public class BasePage extends report {
 	public void launch_chrome() throws HeadlessException, AWTException, IOException{
 		try{
 		record_start_time();
-			System.setProperty("webdriver.chrome.driver", "C:/Users/HP/Desktop/Chrome/chromedriver_win32 (1)/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.get("https://www.google.com");
 			record_end_time();
