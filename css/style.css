@@ -9,3 +9,18 @@ th, td {
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
+
+
+.green{
+
+color:green;
+   background-color: none;
+}
+
+
+.red{
+
+color:red;
+
+   background-color: none;
+}

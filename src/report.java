@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 
 
 public class report {
-	
 	static StringBuilder htmlBuilder=new StringBuilder();
 	private static int i;
 	protected static int filename;
@@ -29,38 +28,35 @@ public class report {
 	
 		 htmlBuilder.append("<table border=\"2\" bordercolor=\"#000000\">");
          //append row
-         htmlBuilder.append("<tr><td><b>Step No.</b></td><td><b>Step Name</b></td><td><b>TestResult</b></td></tr>");
+         htmlBuilder.append("<tr><td><b>Step No.</b></td><td><b>Step Name</b></td><td><b>TestResult</b></td><td><b>Total Time</b></td></tr>");
 	}
 	
-	public void StepDef(String step,String res,int number)
+	public void StepDef(String step,String res,int number,String time)
 	{
+		
 		 i++;
-		 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"/screenshot/"+filename+".png\" target=\"_blank\" color=\"green\"> "+ res +"</a></b></td></tr>");
+		 if(res.equalsIgnoreCase("Passed")){
+			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"C://Users//HP/workspace/Customized_Reports/screenshot/"+filename+".png\" target=\"_blank\" class=\"green\"> "+ res +"</a></b></td><td>" +time+ " </tr>"); 
+		 }
+		 
+		 if(res.equalsIgnoreCase("Failed")){
+			 htmlBuilder.append("<tr><td>"+ i+"</td><td>" +step +"</td><td><b><a href=\"C://Users//HP/workspace/Customized_Reports/screenshot/"+filename+".png\" target=\"_blank\" class=\"red\"> "+ res +"</a></b></td></tr>"); 
+		 }
+		
          filename++;
 	}
 	
 	
 	public void takescreenshot() throws HeadlessException, AWTException, IOException{
 		BufferedImage image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-    	ImageIO.write(image, "png", new File("/screenshot/"+ filename+".png"));
+    	ImageIO.write(image, "png", new File("C://Users/HP/workspace/Customized_Reports/screenshot/"+ filename+".png"));
 	}
 	
 	    public static void WriteToFile(String Content, String fileName) throws IOException {
 	    	 htmlBuilder.append("</table></body></html>");
 	    	String projectPath = System.getProperty("user.dir");
 	        String tempFile = projectPath + File.separator+fileName;
-	        File file = new File(tempFile);
-	        // if file does exists, then delete and create a new file
-	        if (file.exists()) {
-	            try {
-	                File newFileName = new File(projectPath + File.separator+ "Previous-"+fileName);
-	                file.renameTo(newFileName);
-	                file.createNewFile();
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	        //write to file with OutputStreamWriter
+	        File file = new File(tempFile);      
 	        OutputStream outputStream = new FileOutputStream(file.getAbsoluteFile());
 	        Writer writer=new OutputStreamWriter(outputStream);
 	        writer.write(Content);
