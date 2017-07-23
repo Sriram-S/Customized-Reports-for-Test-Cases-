@@ -16,7 +16,7 @@ public class selenium_script extends report {
 	        	
 	        	base.launch_chrome();
 	        	
-	        	base.serach("TCS");
+	        	base.serach("Google");
 	        	
 	        	
 	            WriteToFile(htmlBuilder.toString(),"testfile.html");
